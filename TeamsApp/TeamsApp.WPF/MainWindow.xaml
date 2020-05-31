@@ -1,0 +1,87 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        x:Class="TeamsAppWpf.MainWindow" 
+        Width="1265" Height="700"
+        WindowStyle="ThreeDBorderWindow"
+        ResizeMode="CanMinimize"
+        Background="LightGray"
+        Title="TeamsApp">
+
+    <Window.Resources>
+        <ResourceDictionary Source="Styles/Common.xaml"></ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <!--<Image Source="{StaticResource AbbBackgroundImage}" Opacity="0.18" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>-->
+        <Grid x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border BorderBrush="Silver" BorderThickness="1" HorizontalAlignment="Left" Height="266" Margin="25,91,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1205">
+                <Controls:ProgressRing x:Name="ProgressBar" Visibility="Collapsed" IsActive="True" Width="50" Height="50" Foreground="White" Margin="564.2,-91.8,554.2,305.4"/>
+            </Border>
+
+            <!-- Top App Bar -->
+            <TextBlock x:Name="appTitle" Grid.Row="0" Text="Teams App" Style="{StaticResource DgwMainTextBlockStyle}" FontWeight="SemiBold" FontSize="36" Margin="505,0,505,11" Width="215"  />
+            <Button Style="{StaticResource DgwButtonStyle}" x:Name="ConnectButton"  Content="Connect" Click="ConnectButton_Click" Margin="0,31,30,0"/>
+            <Button Style="{StaticResource DgwButtonStyle}" Grid.Row="1" x:Name="LoadTeamsButton" IsEnabled="False" Margin="0,25,568,0" Content="Load Teams" FontSize="15" Click="LoadTeamsButton_Click" Height="40" Width="126" FontWeight="SemiBold" />
+            <!-- Teams -->
+            <TextBlock Style="{StaticResource DgwTextBlockStyle}" FontWeight="SemiBold" Margin="81,50,0,0" Grid.Row="2" Text="Source Team"/>
+            <ComboBox IsEnabled="False" x:Name="ComboBox_Teams_Source" ItemsSource="{Binding Teams}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Margin="169,44,0,0" Grid.Row="2" VerticalAlignment="Top" Width="235" SelectionChanged="ComboBox_Teams_SelectionChanged"/>
+
+            <TextBlock Style="{StaticResource DgwTextBlockStyle}" FontWeight="SemiBold" Margin="844,50,0,0" Grid.Row="2" Text="Destination Team"/>
+            <ComboBox IsEnabled="False" x:Name="ComboBox_Teams_Dest" ItemsSource="{Binding Teams}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Margin="964,44,0,0" Grid.Row="2" VerticalAlignment="Top" Width="235" SelectionChanged="ComboBox_Teams_SelectionChanged" Height="22"/>
+
+            <!-- Channel -->
+            <TextBlock Visibility="Hidden" HorizontalAlignment="Left" Text="Select Channel" VerticalAlignment="Top" Margin="45,96,0,0" Grid.Row="2"/>
+            <ComboBox Visibility="Hidden" IsEnabled="False" x:Name="ComboBox_Channels" ItemsSource="{Binding Channels}" DisplayMemberPath="DisplayName" HorizontalAlignment="Left" Margin="169,91,0,0" Grid.Row="2"  VerticalAlignment="Top" Width="232" SelectionChanged="ComboBox_Channels_SelectionChanged"/>
+
+            <!-- Planner -->
+            <TextBlock Style="{StaticResource DgwTextBlockStyle}" FontWeight="SemiBold" Text="Planner Source" Margin="68,105,0,0" Grid.Row="2"/>
+            <ListView x:Name="PlannerSourceList" HorizontalAlignment="Left" Height="235" Width="235" Margin="169,105,0,0" Grid.Row="2" VerticalAlignment="Top"  SelectionMode="Single" SelectionChanged="PlannerSourceList_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="x:String">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Title}" Margin="2, 10, 0, 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type FrameworkElement}">
+                        <Setter Property="Margin" Value="0,0,0,10"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+            <TextBlock Style="{StaticResource DgwTextBlockStyle}" FontWeight="SemiBold" Text="Planner Destination" Margin="835,107,0,0" Grid.Row="2"/>
+            <ListView x:Name="PlannerDestinationList" HorizontalAlignment="Left" Height="235" Width="235" Margin="964,105,0,0" Grid.Row="2" VerticalAlignment="Top" SelectionMode="Single" SelectionChanged="PlannerDestinationList_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="x:String">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Title}" Margin="2, 10, 0, 0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type FrameworkElement}">
+                        <Setter Property="Margin" Value="0,0,0,10"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+            <!-- Copy -->
+            <Button x:Name="CopyPlannerButton" Style="{StaticResource DgwButtonStyle}" Content="COPY --&gt;" IsEnabled="False" HorizontalAlignment="Left" Margin="522,107,0,0" Grid.Row="2" VerticalAlignment="Top" Click="CopyPlanner_Click" Width="216" RenderTransformOrigin="0.505,0.578" Height="22" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+
+            <!-- Info / Logging -->
+            <Border BorderBrush="Silver" BorderThickness="3" Margin="10,415,10,9.8" Grid.Row="2"/>
+            <TextBlock Grid.Row="2" x:Name="InfoText" Foreground="Black" FontWeight="SemiBold" FontSize="16" TextWrapping="Wrap" Margin="25,420,30,9.8"/>
+        </Grid>
+
+    </Grid>
+</Window>
+    

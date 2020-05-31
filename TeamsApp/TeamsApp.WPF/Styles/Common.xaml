@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:TeamsAppWpf.Styles">
+
+    <Style TargetType="{x:Type Button}" x:Key="DgwButtonStyle">
+        <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+        <Setter Property="Margin" Value="0,15,25,0"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="Width" Value="120"></Setter>
+        <Setter Property="FontFamily" Value="Verdana"></Setter>
+        <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="FontWeight" Value="Normal"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Background" Value="#FF000F"></Setter>
+        <Setter Property="BorderBrush" Value="Black"></Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="DgwMainTextBlockStyle">
+        <Setter Property="Foreground" Value="#FF000F"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="VerticalAlignment" Value="Bottom"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="DgwTextBlockStyle">
+        <Setter Property="Foreground" Value="#FF000F"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="TextAlignment" Value="Center"></Setter>
+    </Style>
+    
+</ResourceDictionary>
